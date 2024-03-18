@@ -53,5 +53,23 @@ describe("Work with Web elements", () => {
         //Valida quantos radios existem com este mesmo name
         cy.get("input[name='radioGroup1']").should("have.length", 4);
 
-    } )
+    })
+
+    it("Should be validate Check box", () => {
+
+        //Valida quantos checkbox exitem
+        cy.get("input[name='chkbox']").should("have.length", 4);
+
+        cy.get("input[name='chkbox']")
+            .check("Check 2")
+            .should("be.checked")
+            .uncheck("Check 2")
+            .should("not.be.checked");
+
+        cy.get("input[name='chkbox']")
+            .check( {multiple:true} )            
+            .should("be.checked")
+            .uncheck("Check 4")
+            .should("not.be.checked")
+    })
 })

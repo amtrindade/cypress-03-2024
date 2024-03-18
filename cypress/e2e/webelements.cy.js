@@ -55,6 +55,19 @@ describe("Work with Web elements", () => {
 
     })
 
+    it("Should be radio unique", () => {
+        cy.get("input[name='radioGroup1']")
+            .first().check().should("be.checked");
+
+        cy.get("input[name='radioGroup1']")
+            .check("Radio 2")
+            .should("be.checked")
+
+        cy.get("input[name='radioGroup1']")
+            .first()
+            .should("not.be.checked");
+    })
+
     it("Should be validate Check box", () => {
 
         //Valida quantos checkbox exitem

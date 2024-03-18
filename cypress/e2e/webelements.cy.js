@@ -23,13 +23,35 @@ describe("Work with Web elements", () => {
         cy.get("input[name='txtbox2']")
             .should("be.disabled");
             //.should("not.be.enabled");
-
     })
 
     it("Should be validate Text in textfield", () => {
         cy.get("input[name='txtbox2']")
             .type("Curso Cypress", {force: true})
             .should("have.value", "Curso Cypress");
-
     })
+
+    it("Should be validate Label", () => {
+        cy.get('form > :nth-child(1) > .text-muted')
+            .should("have.text", "TextField:");
+    })
+
+    it("Shoud be validate Radio Group", ()=> {
+
+        //Seleciona o primeiro e valida que está checked
+        cy.get("input[name='radioGroup1']")
+            .first().check().should("be.checked");
+
+        //Seleciona o terceiro e valida que está checked
+        cy.get("input[name='radioGroup1']")
+            .check("Radio 3").should("be.checked");
+
+        //Seleciona o último e valida que está checked
+        cy.get("input[name='radioGroup1']")
+            .last().check().should("be.checked");
+
+        //Valida quantos radios existem com este mesmo name
+        cy.get("input[name='radioGroup1']").should("have.length", 4);
+
+    } )
 })

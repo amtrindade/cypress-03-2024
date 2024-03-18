@@ -15,6 +15,4 @@ describe("Work with webelements", () => {
             .type("Hello world")
             .should("have.value", "Hello world")
     })
-
-
 })

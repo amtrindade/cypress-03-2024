@@ -86,7 +86,7 @@ describe("Work with Web elements", () => {
             .should("not.be.checked")
     })
 
-    it.only("Should be validate Single Select", () => {
+    it("Should be validate Single Select", () => {
         //seletor do componente pai
         cy.get("select[name='dropdownlist']")
             .select("Item 2")
@@ -96,7 +96,7 @@ describe("Work with Web elements", () => {
         cy.get("select[name='dropdownlist'] option")
             .first()
             .should("have.value", "item1");
-        
+
         //Selector por um item específico
         cy.get("select[name='dropdownlist'] [value='item4']")
             .should("have.value", "item4");
@@ -104,5 +104,14 @@ describe("Work with Web elements", () => {
         cy.get("select[name='dropdownlist'] option")
             .should("have.length", 10);
 
+        //TODO Varrer o componente validando os 10 itens da lista
+
+    })
+
+    it("Should be validate Multi select", () => {
+        cy.get("select[name='multiselectdropdown']")
+            .select(["Item 2", "Item 5", "Item 9"]);
+
+        //TODO Identificar os 3 elementos selecionados
     })
 })

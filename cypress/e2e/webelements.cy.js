@@ -85,4 +85,24 @@ describe("Work with Web elements", () => {
             .uncheck("Check 4")
             .should("not.be.checked")
     })
+
+    it.only("Should be validate Single Select", () => {
+        //seletor do componente pai
+        cy.get("select[name='dropdownlist']")
+            .select("Item 2")
+            .should("have.value", "item2");
+
+        //Selector da lista com 10 itens
+        cy.get("select[name='dropdownlist'] option")
+            .first()
+            .should("have.value", "item1");
+        
+        //Selector por um item específico
+        cy.get("select[name='dropdownlist'] [value='item4']")
+            .should("have.value", "item4");
+
+        cy.get("select[name='dropdownlist'] option")
+            .should("have.length", 10);
+
+    })
 })

@@ -15,9 +15,11 @@ describe("To Do tests", () => {
         cy.get("ul[class='todo-list'] li")
             .should("have.length", 3)
             .last()
-            .should("have.text", `${task}`);
+            .should(`have.text`, `${task}`);
+
+        cy.get("ul[class='todo-list'] li")
+            .should("have.length", 3)
+            .should('contain', `${task}`)
 
     })
-
-
 })

@@ -26,13 +26,14 @@ describe("To Do tests", () => {
     describe("Tests condition task added", () => {
 
         beforeEach(() =>{
-            cy.get('[data-test="new-todo"]').type(`${task}{enter}`);
+            cy.get('[data-test="new-todo"]').type(`${task}{enter}`)
         })
 
-        it("Should complete task", () => {
+        it.only("Should complete task", () => {
             cy.get("ul[class='todo-list'] li")
                 .contains(`${task}`)
                 .parent()
+                .pause()
                 .find('input')
                 .check()
                 .should('be.checked')
@@ -50,12 +51,12 @@ describe("To Do tests", () => {
         it("Should be delete new task", () => {
             cy.get("ul[class='todo-list'] li")
                 .contains(`${task}`)
-                .parent()
+                .parent()                
                 .find('input')
                 .check()
                 .should('be.checked')
     
-            cy.get("ul[class='todo-list'] li")
+            cy.get("ul[class='todo-list'] li")                
                 .contains(`${task}`)
                 .parent()
                 .find('button')

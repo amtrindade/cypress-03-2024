@@ -1,7 +1,7 @@
 ///<reference types="cypress"/>
 
 describe("Work with hooks", () => {
-    
+
     before(() => {
         console.log("before A")
     })
@@ -44,6 +44,6 @@ describe("Group test B", () => {
     })
 
     it("test 04", () => {
-        console.log('test 04')      
+        console.log('test 04')
     })
 })

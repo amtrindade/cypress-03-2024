@@ -8,9 +8,12 @@ describe("To Do tests", () => {
         cy.visit("https://example.cypress.io/todo#/");
     })
 
-    it("Should be todo new task", () => {
+    it.only("Should be todo new task", () => {
         cy.get('[data-test="new-todo"]')
             .type(`${task}{enter}`);
+
+        //cy.xpath("//input[@class='new-todo']").type(`${task}{enter}`)
+            
         //Validação 1    
         cy.get("ul[class='todo-list'] li")
             .should("have.length", 3)

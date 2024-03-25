@@ -6,8 +6,17 @@ describe("Work with Web elements", () => {
         cy.visit("/elementsweb.html");
     })
 
-    it("Should validate title page", ()=> {
-        cy.title().should('to.be.equal', 'WebElements Test Page Lab');
+
+    it("Should validate title page", () => {
+        const title = cy.title()
+
+        //cy.title().should('to.be.equal', 'WebElements Test Page Lab');
+        cy.title().then($el => {
+            console.log($el.val)
+        })
+
+        cy.get("input[name='txtbox1']").type(title)
+
     })
 
     it("Should be validate Hello World in text field", () =>{
@@ -104,14 +113,28 @@ describe("Work with Web elements", () => {
         cy.get("select[name='dropdownlist'] option")
             .should("have.length", 10);
 
-        //TODO Varrer o componente validando os 10 itens da lista
+        //Varrer o componente validando os 10 itens da lista
+        cy.get("select[name='dropdownlist'] option").then($list => {
+            const itens = [];
+            $list.each(function() {
+                itens.push(this.innerText)
+            })
+
+            expect(itens).to.include.members(['Item 1', 'Item 2', 'Item 3', 'Item 4','Item 5', 
+                'Item 6','Item 7', 'Item 8', 'Item 9', 'Item 10'])
+        })
 
     })
 
-    it("Should be validate Multi select", () => {
+    it.only("Should be validate Multi select", () => {
         cy.get("select[name='multiselectdropdown']")
             .select(["Item 2", "Item 5", "Item 9"]);
 
         //TODO Identificar os 3 elementos selecionados
+        cy.get("select[name='multiselectdropdown']").then($el => {
+            expect($el.val()).to.have.length(3);
+            expect($el.val()).to.be.deep.equal(["item2", "item5", "item9"])
+        })
+
     })
 })

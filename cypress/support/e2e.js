@@ -21,3 +21,8 @@ import './commands'
 
 //Adiciona xpath a execução do cypress
 require('cypress-xpath');
+
+//Ordenação dos selectors a partir do inspect do Cypress
+Cypress.SelectorPlayground.defaults({
+    selectorPriority: ['data-*','id', 'class', 'tag', 'attributes', 'nth-child']
+})

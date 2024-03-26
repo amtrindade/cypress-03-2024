@@ -12,6 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.6.6",
-    "cypress-xpath": "^2.0.1"
+    "cypress-multi-reporters": "^1.6.4",
+    "cypress-xpath": "^2.0.1",
+    "mocha-foo-reporter": "^0.0.1",
+    "mocha-junit-reporter": "^2.2.1"
   }
 }

@@ -9,9 +9,22 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
+//-- This is a parent command --
+
+import loc from './locators'
+
+Cypress.Commands.add('login', (environment, username, password) => { 
+    cy.get(loc.LOGIN.TF_WORKSPACE).type(environment)
+    cy.get(loc.LOGIN.TF_USERNAME).type(username)
+    cy.get(loc.LOGIN.TF_PASSWORD).type(password)
+    cy.get(loc.LOGIN.BTN_LOGIN).click()
+})
+
+Cypress.Commands.add('search', (description) => {
+    cy.get(loc.LIST_LOCAL.TF_SEARCH).type(description)
+    cy.get(loc.LIST_LOCAL.BTN_SEARCH).click()
+})
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

@@ -7,7 +7,7 @@ describe('Work with locals', () => {
     beforeEach(() => {
         cy.visit('https://center.umov.me/');
         //comando personalizado
-        cy.login('trindade', 'cypress', 'trocarsenha')
+        cy.login('trindade', 'cypress', 'a')
 
         cy.get(loc.MENU.OP_LOCATIONS).click()
 
@@ -64,7 +64,5 @@ describe('Work with locals', () => {
 
             cy.get(loc.LIST_LOCAL.TD_FIRST_DESCRIPTION).should("not.exist");
         })
-
     })
-
 })

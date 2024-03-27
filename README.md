@@ -21,3 +21,7 @@ npm run cy:open
 ```
 npm run cy:run
 ``` 
+ou 
+```
+npx cypress run
+```

@@ -7,7 +7,7 @@ describe('Work with locals', () => {
     beforeEach(() => {
         cy.visit('https://center.umov.me/');
         //comando personalizado
-        cy.login('trindade', 'cypress', 'a')
+        cy.login('trindade', 'cypress', 'trocarasenha')
 
         cy.get(loc.MENU.OP_LOCATIONS).click()
 
